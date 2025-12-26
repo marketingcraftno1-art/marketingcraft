@@ -16,56 +16,659 @@
             --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             --font-mono: 'Courier New', monospace;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-primary); color: var(--color-dark); background-color: var(--color-light); line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%); color: white; padding: 15px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 24px; font-weight: bold; letter-spacing: 1px; }
-        .header-right { display: flex; align-items: center; gap: 30px; }
-        nav ul { display: flex; list-style: none; gap: 30px; }
-        nav a { color: white; text-decoration: none; font-weight: 500; transition: opacity 0.3s ease; cursor: pointer; }
-        nav a:hover { opacity: 0.8; }
-        .language-toggle { display: flex; gap: 10px; background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 8px; cursor: pointer; }
-        .language-toggle button { background: none; border: none; color: white; font-weight: 500; cursor: pointer; transition: all 0.3s ease; font-size: 14px; }
-        .language-toggle button.active { background: rgba(255,255,255,0.3); padding: 5px 12px; border-radius: 6px; }
-        .language-toggle button:hover { opacity: 0.8; }
-        .hero { background: linear-gradient(135deg, #2a5f6f 0%, #1d708c 50%, #32b8c6 100%); color: white; padding: 60px 20px; min-height: 600px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; max-width: 1200px; width: 100%; }
-        .hero-text { text-align: left; }
-        .hero-image { display: flex; justify-content: center; align-items: center; }
-        .book-cover-hero { max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); transition: transform 0.3s ease; }
-        .book-cover-hero:hover { transform: scale(1.05); }
-        .hero h1 { font-size: 56px; margin-bottom: 20px; line-height: 1.2; }
-        .hero .tagline { font-size: 24px; margin-bottom: 30px; font-weight: 300; opacity: 0.95; }
-        .hero .subtitle { font-size: 18px; margin-bottom: 40px; opacity: 0.9; }
-        .btn { display: inline-block; padding: 14px 35px; background-color: white; color: var(--color-primary); text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin: 10px 15px; border: 2px solid white; cursor: pointer; font-size: 16px; }
-        .btn:hover { background-color: var(--color-primary); color: white; transform: translateY(-2px); box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
-        .btn-secondary { background-color: transparent; color: white; border: 2px solid white; }
-        .btn-secondary:hover { background-color: white; color: var(--color-primary); }
-        .about { padding: 80px 20px; background-color: white; }
-        .about h2 { font-size: 42px; margin-bottom: 30px; text-align: center; color: var(--color-primary); }
-        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-        .about-text h3 { font-size: 28px; color: var(--color-primary); margin-bottom: 20px; }
-        .about-text p { font-size: 16px; margin-bottom: 15px; color: #555; line-height: 1.8; }
-        .about-highlights { margin-top: 30px; display: flex; flex-direction: column; gap: 15px; }
-        .highlight { display: flex; gap: 15px; align-items: flex-start; }
-        .highlight::before { content: "✓"; color: var(--color-success); font-size: 24px; font-weight: bold; flex-shrink: 0; }
-        .highlight-text { flex: 1; }
-        .highlight-text strong { display: block; color: var(--color-primary); margin-bottom: 5px; }
-        .about-image { text-align: center; }
-        .about-image img { max-width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .hidden { display: none; }
-        .lang { display: block; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--color-dark);
+            background-color: var(--color-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .language-toggle {
+            display: flex;
+            gap: 10px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .language-toggle button {
+            background: none;
+            border: none;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .language-toggle button.active {
+            background: rgba(255,255,255,0.3);
+            padding: 5px 12px;
+            border-radius: 6px;
+        }
+
+        .language-toggle button:hover {
+            opacity: 0.8;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #2a5f6f 0%, #1d708c 50%, #32b8c6 100%);
+            color: white;
+            padding: 60px 20px;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .book-cover-hero {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .book-cover-hero:hover {
+            transform: scale(1.05);
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero .tagline {
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .hero .subtitle {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background-color: white;
+            color: var(--color-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 10px 15px;
+            border: 2px solid white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: var(--color-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--color-primary);
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            padding: 80px 20px;
+            background-color: white;
+        }
+
+        .about h2 {
+            font-size: 42px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--color-primary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .about-highlights {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .highlight {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .highlight::before {
+            content: "✓";
+            color: var(--color-success);
+            font-size: 24px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .highlight-text {
+            flex: 1;
+        }
+
+        .highlight-text strong {
+            display: block;
+            color: var(--color-primary);
+            margin-bottom: 5px;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* BOOKS SECTION */
+        .books {
+            padding: 80px 20px;
+            background-color: #f8f6f3;
+        }
+
+        .section-title {
+            font-size: 42px;
+            margin-bottom: 50px;
+            text-align: center;
+            color: var(--color-primary);
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .book-cover {
+            height: 300px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .book-cover h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .book-cover p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .book-content {
+            padding: 25px;
+        }
+
+        .book-content h4 {
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        .book-content p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .book-status {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: var(--color-success);
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .coming-soon {
+            background-color: #ddd;
+            color: #666;
+        }
+
+        /* COURSES SECTION */
+        .courses {
+            padding: 80px 20px;
+            background-color: white;
+        }
+
+        .course-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background: linear-gradient(135deg, #f8f6f3 0%, white 100%);
+            border-left: 4px solid var(--color-accent);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left-color: var(--color-primary);
+        }
+
+        .course-card h3 {
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .course-card p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .course-topics {
+            background-color: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .course-topics ul {
+            margin-left: 20px;
+        }
+
+        .course-topics li {
+            margin-bottom: 8px;
+        }
+
+        /* PUBLICATIONS SECTION */
+        .publications {
+            padding: 80px 20px;
+            background-color: #f8f6f3;
+        }
+
+        .publications-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .publication-item {
+            background: white;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--color-accent);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+
+        .publication-item h3 {
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        .publication-meta {
+            color: var(--color-gray);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .publication-item p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .publication-link {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .publication-link:hover {
+            color: var(--color-primary);
+        }
+
+        /* NEWS SECTION */
+        .news {
+            padding: 80px 20px;
+            background-color: white;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .news-item {
+            background: linear-gradient(135deg, white 0%, #f8f6f3 100%);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .news-item:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .news-date {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .news-content {
+            padding: 25px;
+        }
+
+        .news-content h3 {
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        .news-content p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* CONTACT SECTION */
+        .contact {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .contact-item p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 40px auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .newsletter-form button {
+            padding: 14px 30px;
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--color-dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 10px 0;
+            opacity: 0.8;
+        }
+
+        footer a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 36px; }
-            .hero-content { grid-template-columns: 1fr; gap: 30px; }
-            .hero-text { text-align: center; }
-            .about-content { grid-template-columns: 1fr; }
-            nav ul { flex-direction: column; gap: 15px; }
-            .header-right { flex-direction: column; gap: 15px; }
-            .newsletter-form { flex-direction: column; }
-            .section-title, .contact h2 { font-size: 32px; }
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .header-right {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .section-title,
+            .contact h2 {
+                font-size: 32px;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
         }
     </style>
 </head>
@@ -79,7 +682,7 @@
                     <nav>
                         <ul>
                             <li><a onclick="showPage('home')"><span id="navHome">Home</span></a></li>
-                            <li><a onclick="showPage('about')"><span id="navAbout">O mnie</span></a></li>
+                            <li><a onclick="showPage('about')"><span id="navAbout">About Me</span></a></li>
                             <li><a onclick="showPage('books')"><span id="navBooks">Books</span></a></li>
                             <li><a onclick="showPage('courses')"><span id="navCourses">Courses</span></a></li>
                             <li><a onclick="showPage('publications')"><span id="navPublications">Publications</span></a></li>
@@ -88,8 +691,8 @@
                         </ul>
                     </nav>
                     <div class="language-toggle">
-                        <button id="langEN" onclick="setLanguage('en')">EN</button>
-                        <button id="langPL" class="active" onclick="setLanguage('pl')">PL</button>
+                        <button id="langEN" class="active" onclick="setLanguage('en')">EN</button>
+                        <button id="langPL" onclick="setLanguage('pl')">PL</button>
                     </div>
                 </div>
             </div>
@@ -101,16 +704,16 @@
         <section class="hero">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 id="heroTitle">Words That Sell</h1>
+                    <h1 id="heroTitle"> That Sell</h1>
                     <p class="tagline" id="heroTagline">Learn the art of copywriting and marketing from an expert</p>
-                    <p class="subtitle" id="heroSubtitle">Slogans that work. Campaigns that deliver results. Words that change business.</p>
+                    <p class="subtitle" id="heroSubtitle">Slogans that work. Campaigns that deliver results.  that change business.</p>
                     <div>
                         <button class="btn" onclick="showPage('about')"><span id="btnAbout">Learn my story</span></button>
                         <button class="btn btn-secondary" onclick="showPage('books')"><span id="btnBooks">My books</span></button>
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/7ad6adbd-10ec-4823-92b8-dcf82aacb533" alt="Words That Sell Book Cover" class="book-cover-hero">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/7ad6adbd-10ec-4823-92b8-dcf82aacb533" alt=" That Sell Book Cover" class="book-cover-hero">
                 </div>
             </div>
         </section>
@@ -144,66 +747,15 @@
                 <div class="about-content">
                     <div class="about-text">
                         <h3>Specjalistka w Marketingu i Copywritingu</h3>
-
-                        <!-- Polish version -->
-                        <div class="lang lang-pl">
-                            <p>Jestem profesorką marketingu z doświadczeniem w pracy naukowej i dydaktycznej, specjalizującą się w komunikacji marketingowej, wizerunku marek oraz marketingu terytorialnym.</p>
-
-                            <p>Jestem ekspertką w projektowaniu komunikacji, która realnie zmienia sposób, w jaki konsumenci postrzegają markę – od kampanii po długofalowe strategie wizerunkowe, zawsze z naciskiem na autentyczność i wiarygodność.</p>
-
-                            <h4>Psychologia słów i edukacja</h4>
-                            <p>Moją pasją jest psychologia słów – badam, jak odpowiednio dobrane frazy potrafią zmienić sposób myślenia o produkcie, marce czy miejscu, a także jak wpływają na tożsamość i decyzje odbiorców.</p>
-
-                            <p>Studiowałam marketing, psychologię i lingwistykę, a obecnie prowadzę zajęcia ze studentami z zakresu marketingu i komunikacji, ucząc ich, jak łączyć dane, język i emocje w skutecznych strategiach rynkowych.</p>
-
-                            <h4>Doświadczenie w pracy ze studentami</h4>
-                            <p>Od lat prowadzę zajęcia akademickie z marketingu, marketingu terytorialnego i komunikacji marki, wspierając studentów w rozwijaniu umiejętności analitycznych i kreatywnych oraz w przygotowywaniu pierwszych projektów badawczych i strategii dla realnych marek.</p>
-
-                            <p>Współpraca ze studentami to dla mnie także przestrzeń do wymiany wiedzy – inspiruje do tworzenia nowych koncepcji marketingowych oraz do łączenia praktyki rynkowej z najnowszymi wynikami badań.</p>
-
-                            <h4>Moje książki i publikacje</h4>
-                            <p>Jestem autorką i współautorką publikacji dotyczących m.in. wizerunku marketingowego państw nordyckich oraz efektywności marketingu terytorialnego dla polskiej marki turystycznej, w których analizuję, jak przemyślany branding miejsc wpływa na rozwój gospodarczy i atrakcyjność turystyczna.</p>
-
-                            <p>Najnowszym dziełem jest książka „Ecological marketing in EU city”, w której skupiłam się na roli marketingu w budowaniu proekologicznego wizerunku miast Unii Europejskiej; praca nad tą książką sprawiła mi ogromną przyjemność, ponieważ łączy moją wrażliwość społeczną z fascynacją strategicznym myśleniem o marce miejsca.</p>
-
-                            <h4>Rola marketingu w mojej pracy</h4>
-                            <p>W centrum moich zainteresowań znajduje się marketing jako narzędzie odpowiedzialnej zmiany – narzędzie, które może wspierać zrównoważony rozwój, budować zaufanie do instytucji oraz tworzyć marki prawdziwie spójne z wartościami, które komunikują.</p>
-
-                            <p>Poprzez książki, kursy i publikacje naukowe pomagam przedsiębiorcom, samorządom i markom projektować komunikację, która nie jest jedynie atrakcyjnym przekazem, lecz konsekwentnie realizowaną obietnicą spójną dla odbiorców.</p>
-                        </div>
-
-                        <!-- English version (hidden by default) -->
-                        <div class="lang lang-en hidden">
-                            <p>A Professor of marketing, specializing in communication, place branding, and territorial marketing, with extensive academic and teaching experience.</p>
-
-                            <p>An expert in designing marketing communication that reshapes how consumers perceive brands, from campaigns to long-term positioning, always grounded in authenticity and credibility.</p>
-
-                            <h4>Psychology of words and teaching</h4>
-                            <p>Passionate about the psychology of words, exploring how carefully chosen phrases can reshape the way people think about products, brands, places, and even themselves, combining scientific insight with creative practice.</p>
-
-                            <p>Educated in marketing, psychology, and linguistics, now teaching university courses in marketing and communication, helping students connect data, language, and emotions into coherent and effective strategies.</p>
-
-                            <h4>Experience with students</h4>
-                            <p>For many years, academic teaching has been a key part of my work: I conduct courses in marketing, territorial marketing, and brand communication, guiding students in developing analytical, strategic, and creative competences and supporting their first research and branding projects.</p>
-
-                            <p>Working with students also inspires new research questions and concepts, allowing a constant dialogue between academic theory and practical market challenges.</p>
-
-                            <h4>Books and publications</h4>
-                            <p>Author and co-author of works on the marketing image of Nordic countries and on the effectiveness of territorial marketing for the Polish tourism brand, focusing on how branding of places influences economic development and tourism attractiveness.</p>
-
-                            <p>The latest book, “Ecological marketing in EU city”, concentrates on the role of marketing in building an ecological, sustainability-oriented image of European Union cities; writing it was a source of great satisfaction, as it connects social responsibility with strategic thinking about place brands.</p>
-
-                            <h4>The role of marketing in my work</h4>
-                            <p>Marketing, in my perspective, is a tool for responsible change: it can support sustainable development, strengthen trust in institutions, and create brands that are genuinely aligned with the values they communicate.</p>
-
-                            <p>Through books, courses, and scientific publications, I support entrepreneurs, local governments, and brands in developing communication that is not only appealing, but also consistent, evidence-based, and oriented toward long-term relationships with their audiences.</p>
-                        </div>
-
+                        <p>Jestem ekspertką w tworzeniu sloganów i komunikacji marketingowej, która zmienia perspektywę konsumentów na markę. Przez ponad 15 lat pracuję z brandami na całym świecie, pomagając im znaleźć swój unikalny głos.</p>
+                        <p>Moja pasja to psychologia słów -- jak kilka wybranych fraz potrafi zmienić sposób, w jaki ludzie myślą o produkcie, firmie czy nawet sobie samych. To nie jest przypadkowe -- to nauka połączona ze sztuką.</p>
+                        <p>Studiowałam marketing, psychologię i lingwistykę. Teraz dzielę się wiedzą poprzez książki, kursy i publikacje naukowe, pomagając przedsiębiorcom i markom zbudować rzeczywiście skuteczną komunikację.</p>
+                        
                         <div class="about-highlights">
                             <div class="highlight">
                                 <div class="highlight-text">
                                     <strong>Autor Bestselerów</strong>
-                                    <p>Napisałam serię książek o copywritingu, między innymi "Words That Sell" - kompendium wiedzy o sloganach</p>
+                                    <p>Napisałam serię książek o copywritingu, między innymi " That Sell" - kompendium wiedzy o sloganach</p>
                                 </div>
                             </div>
                             <div class="highlight">
@@ -218,16 +770,43 @@
                                     <p>Prowadzę kursy online i szkolenia dla firm, ucząc praktycznych technik tworzenia kampanii, które osiągają rezultaty</p>
                                 </div>
                             </div>
+                            <div class="highlight">
+                                <div class="highlight-text">
+                                    <strong>Konsultantka Brandów</strong>
+                                    <p>Pomagam firmom od startupu do korporacji znaleźć ich unikalny głos i komunikować go efektywnie do odbiorcy</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                     <div class="about-image">
-                        <div style="width: 100%; height: 400px; background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <div style="width: 100%; height: 400px; background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; text-align: center; padding: 20px;">
                             <div>
-                                <div style="font-size: 60px; margin-bottom: 20px;">👩‍🏫</div>
+                                <div style="font-size: 60px; margin-bottom: 20px;">👩‍💼</div>
                                 <p><strong>Magdalena Tomala</strong></p>
-                                <p style="margin-top: 10px; opacity: 0.9;">Professor of Marketing — communication, place branding & territorial marketing</p>
+                                <p style="margin-top: 10px; opacity: 0.9;">Expert w Copywritingu i Strategii Marketingowej</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 60px; padding: 40px; background: #f8f6f3; border-radius: 12px; border-left: 4px solid var(--color-primary);">
+                    <h3 style="color: var(--color-primary); margin-bottom: 20px;">Czym zajmuję się teraz?</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                        <div>
+                            <h4 style="color: var(--color-accent); margin-bottom: 10px;">Piszę Książki</h4>
+                            <p style="color: #666;">Serię poradników o marketingu, copywritingu i psychologii konsumenta. " That Sell" to moja pierwsza książka, ale nie ostatnia!</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--color-accent); margin-bottom: 10px;">Publikuję Artykuły Naukowe</h4>
+                            <p style="color: #666;">Współpracuję z Routledge i innymi wydawnictwami, badając efektywność komunikacji marketingowej i psychologię sloganów.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--color-accent); margin-bottom: 10px;">Prowadzę Kursy Online</h4>
+                            <p style="color: #666;">Przygotowuję praktyczne szkolenia, które będą dostępne do kupienia. Naucz się tworzyć slogany i kampanie, które rzeczywiście działają.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--color-accent); margin-bottom: 10px;">Udzielam Konsultacji</h4>
+                            <p style="color: #666;">Pomagam firmom i markom znaleźć swój unikalny głos i komunikować go efektywnie do odbiorcy.</p>
                         </div>
                     </div>
                 </div>
@@ -235,38 +814,476 @@
         </section>
     </div>
 
-    <!-- BOOKS, COURSES, PUBLICATIONS, NEWS, CONTACT and FOOTER sections should remain as in the original file -->
+    <!-- BOOKS PAGE -->
+    <div id="books" class="page-section">
+        <section class="books">
+            <div class="container">
+                <h2 class="section-title">Moje Książki</h2>
+                <p style="text-align: center; font-size: 18px; color: #666; max-width: 700px; margin: 0 auto 40px;">Kompletne poradniki o sloganach, copywritingu i psychologii marketingowej. Każda książka zawiera praktyczne ćwiczenia i rzeczywiste przykłady z branż.</p>
+                
+                <div class="books-grid">
+                    <div class="book-card">
+                        <div class="book-cover">
+                            <h3> That Sell</h3>
+                            <p>Jak pisać slogany, które konsumenci pamiętają</p>
+                        </div>
+                        <div class="book-content">
+                            <h4>Dostępna teraz!</h4>
+                            <p>Kompletny poradnik o psychologii sloganów. Dowiedz się, jak działają wielkie kampanie, jakie mechanizmy mózgu wykorzystują, i jak tworzyć własne slogany, które rzeczywiście działają.</p>
+                            <p><strong>Zawiera:</strong> teorie, przykłady, ćwiczenia praktyczne, case studies.</p>
+                            <div style="margin-top: 15px;">
+                                <span class="book-status">📖 Dostępna</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-cover">
+                            <h3>The Brand Psychology Series</h3>
+                            <p>Seria o psychologii marki i emocji w marketingu</p>
+                        </div>
+                        <div class="book-content">
+                            <h4>Wkrótce</h4>
+                            <p>Głębokie studium psychologicznych mechanizmów, które sprawiają, że ludzie kupują. Od emocji po archetypy kulturowe, jak budować marki, które trafiają w serce konsumenta.</p>
+                            <div style="margin-top: 15px;">
+                                <span class="book-status coming-soon">🔄 Wkrótce</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-cover">
+                            <h3>Copywriting for Your Business</h3>
+                            <p>Praktyczny poradnik dla przedsiębiorców</p>
+                        </div>
+                        <div class="book-content">
+                            <h4>W przygotowaniu</h4>
+                            <p>Praktyczny poradnik dla małych firm i startupów. Jak pisać teksty na stronę, w mediach społecznościowych i emailach, które sprzedają bez bycia natrętnym.</p>
+                            <div style="margin-top: 15px;">
+                                <span class="book-status coming-soon">📝 Planowana</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 60px; padding: 40px; background: white; border-radius: 12px; border: 2px solid var(--color-accent); text-align: center;">
+                    <h3 style="color: var(--color-primary); margin-bottom: 15px;">Chcesz wiedzieć, kiedy pojawią się nowe książki?</h3>
+                    <p style="color: #666; margin-bottom: 20px;">Zapisz się do newslettera i bądź na bieżąco z nowościami</p>
+                    <div class="newsletter-form" style="background: transparent;">
+                        <input type="email" placeholder="Twój email" style="background: #f8f6f3; color: var(--color-dark);">
+                        <button style="background: var(--color-primary); color: white;">Zapisz się</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- COURSES PAGE -->
+    <div id="courses" class="page-section">
+        <section class="courses">
+            <div class="container">
+                <h2 class="section-title">Kursy Online</h2>
+                <p class="course-intro">Uczę praktycznych umiejętności. Każdy kurs zawiera video-lekcje, ćwiczenia praktyczne i dostęp do materiałów na zawsze.</p>
+
+                <div class="course-grid">
+                    <div class="course-card">
+                        <h3>🎯 Copywriting dla Marketingowców</h3>
+                        <p>Naucz się pisać teksty, które sprzedają. Od headline'i, przez body copy, aż po call-to-action.</p>
+                        <div class="course-topics">
+                            <strong>Czego się nauczysz:</strong>
+                            <ul>
+                                <li>Struktura tekstu sprzedażowego</li>
+                                <li>Psychologiczne triki w copywritingu</li>
+                                <li>Pisanie dla stron www i emaili</li>
+                                <li>A/B testowanie tekstów</li>
+                            </ul>
+                        </div>
+                        <p style="color: var(--color-accent); font-weight: bold; margin-top: 20px;">⏳ Wkrótce dostępny do kupienia</p>
+                    </div>
+
+                    <div class="course-card">
+                        <h3>🔥 Slogany, Które Działają</h3>
+                        <p>Jak tworzyć slogany, które konsumenci pamiętają? Praktyczny workshop z ćwiczeniami dla Twojej marki.</p>
+                        <div class="course-topics">
+                            <strong>Czego się nauczysz:</strong>
+                            <ul>
+                                <li>Psychologia sloganów</li>
+                                <li>Techniki burzy mózgów</li>
+                                <li>Testowanie sloganów</li>
+                                <li>Slogany dla różnych branż</li>
+                            </ul>
+                        </div>
+                        <p style="color: var(--color-accent); font-weight: bold; margin-top: 20px;">⏳ Wkrótce dostępny do kupienia</p>
+                    </div>
+
+                    <div class="course-card">
+                        <h3>💡 Strategia Marki w Pigułce</h3>
+                        <p>Od zera do pełnej strategii brandingu. Jak zdefiniować swoją markę i komunikować ją konsekwentnie.</p>
+                        <div class="course-topics">
+                            <strong>Czego się nauczysz:</strong>
+                            <ul>
+                                <li>Definiowanie wartości marki</li>
+                                <li>Positioning konkurencyjny</li>
+                                <li>Tone of voice marki</li>
+                                <li>Brand guidelines</li>
+                            </ul>
+                        </div>
+                        <p style="color: var(--color-accent); font-weight: bold; margin-top: 20px;">⏳ Wkrótce dostępny do kupienia</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 60px; padding: 40px; background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%); border-radius: 12px; color: white; text-align: center;">
+                    <h3 style="margin-bottom: 15px;">Kursy będą dostępne do kupienia niedługo!</h3>
+                    <p style="margin-bottom: 25px; opacity: 0.95;">Każdy kurs będzie zawierać video-lekcje, materiały do pobrania, ćwiczenia praktyczne i dostęp na zawsze.</p>
+                    <button class="btn" style="background: white; color: var(--color-primary);">Powiadom mnie o dostępności</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PUBLICATIONS PAGE -->
+    <div id="publications" class="page-section">
+        <section class="publications">
+            <div class="container">
+                <h2 class="section-title">Publikacje Naukowe</h2>
+                <p class="publications-intro">Oprócz poradników praktycznych, publikuję artykuły naukowe w prestiżowych wydawnictwach. Moja badania fokusują się na psychologii komunikacji marketingowej i efektywności sloganów.</p>
+
+                <div class="publication-item">
+                    <h3>Psychological Mechanisms of Slogan Effectiveness</h3>
+                    <div class="publication-meta">Routledge Journal, 2023 | Peer-reviewed</div>
+                    <p>Artykuł bada, jak mózg człowieka przetwarza krótkie hasła marketingowe. Analizuję mechanizmy pamięci, emocji i podświadomości, które sprawiają, że niektóre slogany zapamiętujemy lepiej niż inne.</p>
+                    <a href="#" class="publication-link">Przeczytaj artykuł →</a>
+                </div>
+
+                <div class="publication-item">
+                    <h3>The Neuroscience of Brand Messaging</h3>
+                    <div class="publication-meta">Journal of Marketing Psychology, 2024 | Peer-reviewed</div>
+                    <p>Badania nad tym, jak różne struktury zdań i wybory słów aktywują różne części mózgu. Szczególnie skupiam się na roli emocji w podejmowaniu decyzji zakupowych.</p>
+                    <a href="#" class="publication-link">Przeczytaj artykuł →</a>
+                </div>
+
+                <div class="publication-item">
+                    <h3>Linguistic Patterns in Viral Marketing Campaigns</h3>
+                    <div class="publication-meta">Routledge, 2024 | Kapitel w książce naukowej</div>
+                    <p>Analiza lingwistycznych wzorów, które sprawiają, że kampanie marketingowe stają się viralne w mediach społecznościowych. Przypadek studiów z ponad 100 kampaniami.</p>
+                    <a href="#" class="publication-link">Przeczytaj rozdziale →</a>
+                </div>
+
+                <div class="publication-item">
+                    <h3>Consumer Behavior and Semantic Priming</h3>
+                    <div class="publication-meta">International Journal of Consumer Research, 2023 | Co-author</div>
+                    <p>Wspólna publikacja badająca, jak słowa na stronach www wpływają na podświadome decyzje konsumentów. Eksperyment z 500+ uczestnikami.</p>
+                    <a href="#" class="publication-link">Przeczytaj artykuł →</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- NEWS PAGE -->
+    <div id="news" class="page-section">
+        <section class="news">
+            <div class="container">
+                <h2 class="section-title">Aktualności</h2>
+
+                <div class="news-grid">
+                    <div class="news-item">
+                        <div class="news-date">26 grudnia 2024</div>
+                        <div class="news-content">
+                            <h3>Nowa strona internetowa Marketing Craft!</h3>
+                            <p>Właśnie uruchomiłam nową stronę, gdzie będę dzielić się wiedzą o copywritingu, sloganach i psychologii marketingu. To będzie hub dla wszystkich, którzy chcą nauczyć się tworzyć kampanie, które rzeczywiście działają.</p>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-date">15 grudnia 2024</div>
+                        <div class="news-content">
+                            <h3>" That Sell" dostępna do preordera!</h3>
+                            <p>Moja pierwsza książka o sloganach jest już dostępna! Zarezerwuj sobie egzemplarz i naucz się, jak psychologia wpływa na skuteczność komunikacji marketingowej.</p>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-date">1 grudnia 2024</div>
+                        <div class="news-content">
+                            <h3>Publikacja w Routledge</h3>
+                            <p>Mój artykuł "Psychological Mechanisms of Slogan Effectiveness" został opublikowany w prestiżowym czasopiśmie Routledge. Przeczytaj o neuronaukowych badaniach skuteczności sloganów.</p>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-date">15 listopada 2024</div>
+                        <div class="news-content">
+                            <h3>Kursy online w przygotowaniu</h3>
+                            <p>Pracuję nad serią praktycznych kursów online. Będą dostępne do kupienia już niedługo. Zapisz się do newslettera, aby być powiadomionym, gdy się pojawią!</p>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-date">1 listopada 2024</div>
+                        <div class="news-content">
+                            <h3>Webinar o copywritingu dla startupów</h3>
+                            <p>Zapraszam na bezpłatny webinar, gdzie opowiedzę o praktycznych technikach copywritingu dla małych firm. Rejestracja otwarta teraz!</p>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-date">10 października 2024</div>
+                        <div class="news-content">
+                            <h3>Marketing Craft się rodzi!</h3>
+                            <p>Zaczynam nowy projekt - Marketing Craft. Platforma do dzielenia się wiedzą o copywritingu, sloganach i psychologii marketingu. Zapraszam do śledzenia moją podróż!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page-section">
+        <section class="contact">
+            <div class="container">
+                <h2>Skontaktuj się ze Mną</h2>
+                <p>Masz pytania? Chcesz współpracować? A może chcesz zatrudnić mnie do konsultacji dla Twojej marki?</p>
+
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <h3>📧 Email</h3>
+                        <p>magdalena.tomala@marketingcraft.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📞 Telefon</h3>
+                        <p>+48 123 456 789</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>🌐 Social Media</h3>
+                        <p>LinkedIn | Instagram | Twitter</p>
+                    </div>
+                </div>
+
+                <div style="max-width: 600px; margin: 50px auto; text-align: left;">
+                    <h3 style="text-align: center; margin-bottom: 30px;">Newsletter - Bądź na bieżąco!</h3>
+                    <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                        <input type="email" placeholder="Twój email" required style="background: white; color: var(--color-dark);">
+                        <button type="submit" style="background: var(--color-primary); color: white; cursor: pointer;">Subskrybuj</button>
+                    </form>
+                    <p style="text-align: center; font-size: 14px; margin-top: 20px;">Otrzymuj najnowsze artykuły, porady i informacje o kursach i książkach. Bez spamu -- obiecuję!</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Marketing Craft - Magdalena Tomala. Wszystkie prawa zastrzeżone.</p>
+            <p>Sztuką marketingu jest mówienie właściwych słów we właściwym momencie do właściwych ludzi.</p>
+            <p><a href="#">Polityka prywatności</a> | <a href="#">Warunki korzystania</a></p>
+        </div>
+    </footer>
 
     <script>
-        // Simple page navigation and language toggle
-        function showPage(id) {
-            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
-            var el = document.getElementById(id);
-            if (el) el.classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        // Language translations
+        const translations = {
+            en: {
+                navHome: "Home",
+                navAbout: "About I",
+                navBooks: "Books",
+                navCourses: "Courses",
+                navPublications: "Publications",
+                navNews: "News",
+                navContact: "Contact",
+                heroTitle: " That Sell",
+                heroTagline: "Learn the art of copywriting and marketing from an expert",
+                heroSubtitle: "Slogans that work. Campaigns that deliver results.  that change business.",
+                btnAbout: "Learn my story",
+                btnBooks: "My books",
+                whatFind: "What can you find here?",
+                booksDesc: "Complete guides on slogans, copywriting and marketing psychology",
+                coursesDesc: "Practical online training you can buy. Learn to create effective campaigns",
+                publicationsDesc: "Articles in Routledge and other prestigious publishers",
+                aboutTitle: "About Me - Magdalena Tomala",
+                expert: "Expert in Marketing",
+                about1: "I am an expert in creating slogans and marketing communication that changes consumers' perspective on a brand. For over 15 years, I've worked with brands worldwide, helping them find their unique voice.",
+                about2: "My passion is the psychology of  -- how a few chosen phrases can change the way people think about a product, company or even themselves. It's not random -- it's science combined with art.",
+                about3: "I studied marketing, psychology and linguistics. Now I share my knowledge through books, courses and scientific publications, helping entrepreneurs and brands build truly effective communication.",
+                authorBooks: "Author of Bestsellers",
+                authorBooksDesc: "I wrote a series of copywriting books, including ' That Sell' - a comprehensive compendium about slogans",
+                authorScience: "Scientific Author",
+                authorScienceDesc: "I publish in prestigious publishers like Routledge, researching marketing psychology and communication effectiveness",
+                educator: "Educator and Mentor",
+                educatorDesc: "I run online courses and corporate training, teaching practical techniques for creating campaigns that deliver results",
+                consultant: "Brand Consultant",
+                consultantDesc: "I help companies from startups to corporations find their unique voice and communicate it effectively to their audience",
+                whatNow: "What do I do now?",
+                writeBooks: "Write Books",
+                writeBooksDesc: "A series of marketing guides, copywriting and consumer psychology. ' That Sell' is my first book, but not my last!",
+                publishArticles: "Publish Scientific Articles",
+                publishArticlesDesc: "I collaborate with Routledge and other publishers, researching marketing communication effectiveness and the psychology of slogans.",
+                runCourses: "Run Online Courses",
+                runCoursesDesc: "I'm preparing practical online training that will be available for purchase. Learn to create slogans and campaigns that really work.",
+                giveConsultations: "Provide Consultations",
+                giveConsultationsDesc: "I help companies and brands find their unique voice and communicate it effectively to their audience.",
+                myBooks: "My Books",
+                booksIntro: "Complete guides on slogans, copywriting and marketing psychology. Each book includes practical exercises and real-world examples from various industries.",
+                ThatSell: " That Sell",
+                ThatSellSub: "How to write slogans that consumers remember",
+                availableNow: "Available now!",
+                ThatSellDesc: "A complete guide to the psychology of slogans. Learn how great campaigns work, what brain mechanisms they use, and how to create your own slogans that really work.",
+                containsColon: "Contains: theories, examples, practical exercises, case studies.",
+                onlineCourses: "Online Courses",
+                coursesIntro: "I teach practical skills. Each course includes video lessons, practical exercises and lifetime access to materials.",
+                copywritingCourse: "Copywriting for Marketers",
+                copywritingDesc: "Learn to write texts that sell. From headlines, through body copy, to call-to-action.",
+                learnWhat: "What you'll learn:",
+                courseTopics: "Structure of sales text | Psychological tricks in copywriting | Writing for websites and emails | A/B testing texts",
+                slogansAvailable: "⏳ Soon available for purchase",
+                scientificPublications: "Scientific Publications",
+                publicationsIntro: "Besides practical guides, I publish scientific articles in prestigious publishers. My research focuses on the psychology of marketing communication and slogan effectiveness.",
+                psychMechanisms: "Psychological Mechanisms of Slogan Effectiveness",
+                brandPsych: "The Neuroscience of Brand Messaging",
+                linguisticPatterns: "Linguistic Patterns in Viral Marketing Campaigns",
+                consumerBehavior: "Consumer Behavior and Semantic Priming",
+                news: "News",
+                newWebsite: "New Marketing Craft website!",
+                newsDesc1: "I just launched a new website where I will share knowledge about copywriting, slogans and marketing psychology. This will be a hub for everyone who wants to learn how to create campaigns that really work.",
+                SellReady: "' That Sell' available for pre-order!",
+                newsDesc2: "My first book about slogans is now available! Reserve your copy and learn how psychology affects the effectiveness of marketing communication.",
+                contactMe: "Contact Me",
+                contactText: "Do you have questions? Want to collaborate? Or maybe you want to hire me for consultation for your brand?",
+                email: "Email",
+                phone: "Phone",
+                socialMedia: "Social Media",
+                newsletter: "Newsletter - Stay Updated!",
+                newsletterText: "Get the latest articles, tips and information about courses and books. No spam - I promise!",
+                subscribe: "Subscribe",
+                thanks: "Thank you for subscribing! We'll send confirmation to",
+                footerCopyright: "© 2024 Marketing Craft - Magdalena Tomala. All rights reserved.",
+                footerQuote: "The art of marketing is saying the right  at the right time to the right people.",
+                privacy: "Privacy Policy",
+                terms: "Terms of Use"
+            },
+            pl: {
+                navHome: "Strona Główna",
+                navAbout: "O Mnie",
+                navBooks: "Książki",
+                navCourses: "Kursy",
+                navPublications: "Publikacje",
+                navNews: "Aktualności",
+                navContact: "Kontakt",
+                heroTitle: "Słowa, które sprzedają",
+                heroTagline: "Naucz się sztuki copywritingu i marketingu od eksperta",
+                heroSubtitle: "Slogany, które działają. Kampanie, które osiągają rezultaty. Słowa, które zmieniają biznes.",
+                btnAbout: "Poznaj moją historię",
+                btnBooks: "Moje książki",
+                whatFind: "Co możesz tutaj znaleźć?",
+                booksDesc: "Kompletne poradniki o narzędziach marketingowych i psychologii marketingowej",
+                coursesDesc: "Praktyczne szkolenia online do kupienia. Naucz się tworzyć efektywne kampanie",
+                publicationsDesc: "Artykuły w Routledge i innych prestiżowych wydawnictwach",
+                aboutTitle: "O Mnie - Magdalena Tomala",
+                expert: "Specjalistka w Marketingu i biznesie oraz stosunkach międzynarodowych",
+                about1: "Jestem ekspertką w komunikacji marketingowej, profesorką specjalizującą się w budowaniu wizerunku marek i terytoriów, a także autorką książek i opracowań naukowych z zakresu marketingu. Moja praca łączy perspektywę badawczą, dydaktyczną i praktyczną, skupioną na autentycznych wartościach."
+                about2: "Psychologia słów i edukacji. Moją pasją jest psychologia słów – badam, jak odpowiednio dobrane frazy potrafią zmienić sposób myślenia o produkcie, marce czy miejscu, a także jak wpływają na tożsamość i decyzje odbiorców. Studiowałam Marketing i Zarządzanie, ekonomię. Doktorat dotyczył współpracy państw regionu Morza Bałtyckiego, a obecnie prowadzę zajęcia ze studentami z zakresu marketingu i komunikacji, ucząc ich, jak łączyć dane, język i emocje w skutecznych strategiach rynkowych."
+                about3:" Moja praca łączy perspektywę badawczą, dydaktyczną i praktyczną, skupioną na autentycznym, opartym na wartościach marketingu."
+                About4: "SPsychologia słów i edukacja
+Moją pasją jest psychologia słów – badam, jak odpowiednio dobrane frazy potrafią zmienić sposób myślenia o produkcie, marce czy miejscu, a także jak wpływają na tożsamość i decyzje odbiorców.
+Studiowałam marketing, psychologię i lingwistykę, a obecnie prowadzę zajęcia ze studentami z zakresu marketingu i komunikacji, ucząc ich, jak łączyć dane, język i emocje w skutecznych strategiach rynkowych.",
+                authorBooks: "Autor Bestselerów",
+                authorBooksDesc: "Napisałam serię książek o copywritingu, między innymi ' That Sell' - kompendium wiedzy o sloganach",
+                authorScience: "Autorka Naukowa",
+                authorScienceDesc: "Publikuję w prestiżowych wydawnictwach jak Routledge, badając psychologię marketingu i efektywności komunikacji",
+                educator: "Edukatorka i Mentorka",
+                educatorDesc: "Prowadzę kursy online i szkolenia dla firm, ucząc praktycznych technik tworzenia kampanii, które osiągają rezultaty",
+                consultant: "Konsultantka Brandów",
+                consultantDesc: "Pomagam firmom od startupu do korporacji znaleźć ich unikalny głos i komunikować go efektywnie do odbiorcy",
+                whatNow: "Czym zajmuję się teraz?",
+                writeBooks: "Piszę Książki",
+                writeBooksDesc: "Serię poradników o marketingu, copywritingu i psychologii konsumenta. ' That Sell' to moja pierwsza książka, ale nie ostatnia!",
+                publishArticles: "Publikuję Artykuły Naukowe",
+                publishArticlesDesc: "Współpracuję z Routledge i innymi wydawnictwami, badając efektywność komunikacji marketingowej i psychologię sloganów.",
+                runCourses: "Prowadzę Kursy Online",
+                runCoursesDesc: "Przygotowuję praktyczne szkolenia, które będą dostępne do kupienia. Naucz się tworzyć slogany i kampanie, które rzeczywiście działają.",
+                giveConsultations: "Udzielam Konsultacji",
+                giveConsultationsDesc: "Pomagam firmom i markom znaleźć swój unikalny głos i komunikować go efektywnie do odbiorcy.",
+                myBooks: "Moje Książki",
+                booksIntro: "Kompletne poradniki o sloganach, copywritingu i psychologii marketingowej. Każda książka zawiera praktyczne ćwiczenia i rzeczywiste przykłady z branż.",
+                ThatSell: " That Sell",
+                ThatSellSub: "Jak pisać slogany, które konsumenci pamiętają",
+                availableNow: "Dostępna teraz!",
+                ThatSellDesc: "Kompletny poradnik o psychologii sloganów. Dowiedz się, jak działają wielkie kampanie, jakie mechanizmy mózgu wykorzystują, i jak tworzyć własne slogany, które rzeczywiście działają.",
+                containsColon: "Zawiera: teorie, przykłady, ćwiczenia praktyczne, case studies.",
+                onlineCourses: "Kursy Online",
+                coursesIntro: "Uczę praktycznych umiejętności. Każdy kurs zawiera video-lekcje, ćwiczenia praktyczne i dostęp do materiałów na zawsze.",
+                copywritingCourse: "Copywriting dla Marketingowców",
+                copywritingDesc: "Naucz się pisać teksty, które sprzedają. Od headline'i, przez body copy, aż po call-to-action.",
+                learnWhat: "Czego się nauczysz:",
+                courseTopics: "Struktura tekstu sprzedażowego | Psychologiczne triki w copywritingu | Pisanie dla stron www i emaili | A/B testowanie tekstów",
+                slogansAvailable: "⏳ Wkrótce dostępny do kupienia",
+                scientificPublications: "Publikacje Naukowe",
+                publicationsIntro: "Oprócz poradników praktycznych, publikuję artykuły naukowe w prestiżowych wydawnictwach. Moja badania fokusują się na psychologii komunikacji marketingowej i efektywności sloganów.",
+                psychMechanisms: "Psychological Mechanisms of Slogan Effectiveness",
+                brandPsych: "The Neuroscience of Brand Messaging",
+                linguisticPatterns: "Linguistic Patterns in Viral Marketing Campaigns",
+                consumerBehavior: "Consumer Behavior and Semantic Priming",
+                news: "News",
+                newWebsite: "Nowa strona internetowa Marketing Craft!",
+                newsDesc1: "Właśnie uruchomiłam nową stronę, gdzie będę dzielić się wiedzą o copywritingu, sloganach i psychologii marketingu. To będzie hub dla wszystkich, którzy chcą nauczyć się tworzyć kampanie, które rzeczywiście działają.",
+                SellReady: "' That Sell' dostępna do preordera!",
+                newsDesc2: "Moja pierwsza książka o sloganach jest już dostępna! Zarezerwuj sobie egzemplarz i naucz się, jak psychologia wpływa na skuteczność komunikacji marketingowej.",
+                contactMe: "Skontaktuj się ze Mną",
+                contactText: "Masz pytania? Chcesz współpracować? A może chcesz zatrudnić mnie do konsultacji dla Twojej marki?",
+                email: "Email",
+                phone: "Telefon",
+                socialMedia: "Social Media",
+                newsletter: "Newsletter - Bądź na bieżąco!",
+                newsletterText: "Otrzymuj najnowsze artykuły, porady i informacje o kursach i książkach. Bez spamu -- obiecuję!",
+                subscribe: "Subskrybuj",
+                thanks: "Dziękuję za subskrypcję! Na",
+                footerCopyright: "© 2024 Marketing Craft - Magdalena Tomala. Wszystkie prawa zastrzeżone.",
+                footerQuote: "Sztuką marketingu jest mówienie właściwych słów we właściwym momencie do właściwych ludzi.",
+                privacy: "Polityka prywatności",
+                terms: "Warunki korzystania"
+            }
+        };
+
+        let currentLanguage = 'en';
 
         function setLanguage(lang) {
-            // toggle language buttons
+            currentLanguage = lang;
+            
+            // Update active button
             document.getElementById('langEN').classList.toggle('active', lang === 'en');
             document.getElementById('langPL').classList.toggle('active', lang === 'pl');
+            
+            // Update all translatable elements
+            Object.keys(translations[lang]).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
 
-            // show/hide language blocks
-            document.querySelectorAll('.lang-pl').forEach(el => el.classList.toggle('hidden', lang !== 'pl'));
-            document.querySelectorAll('.lang-en').forEach(el => el.classList.toggle('hidden', lang !== 'en'));
-
-            // minimal nav localization (expand if needed)
-            if (lang === 'pl') {
-                document.getElementById('navAbout').textContent = 'O mnie';
-                document.getElementById('navHome').textContent = 'Home';
-            } else {
-                document.getElementById('navAbout').textContent = 'About Me';
-                document.getElementById('navHome').textContent = 'Home';
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+                window.scrollTo(0, 0);
             }
         }
 
-        // initialize default language to Polish
-        setLanguage('pl');
+        function handleNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            const thanks = translations[currentLanguage].thanks;
+            alert(thanks + ' ' + email + ' wyślemy potwierdzenie.');
+            event.target.reset();
+        }
+
+        // Initialize with English
+        setLanguage('en');
     </script>
 </body>
 </html>
